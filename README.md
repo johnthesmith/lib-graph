@@ -1,1 +1,3 @@
-# lib-graph
+# graph
+
+OpenGL libraries.
