@@ -40,17 +40,27 @@ struct Point3i
     );
 
 
+
     friend bool operator ==
     (
         const Point3i&,  /* First operand */
         const Point3i&   /* Second operand */
     );
 
+
+
     friend bool operator !=
     (
         const Point3i&,  /* First operand */
         const Point3i&   /* Second operand */
     );
+
+
+
+    /*
+        Multiplication vector components
+    */
+    int mulComponents();
 };
 
 

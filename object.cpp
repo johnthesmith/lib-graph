@@ -9,6 +9,12 @@
 
 
 
+Object* Object::create()
+{
+    return new Object();
+}
+
+
 
 /*
     Directive set eye position

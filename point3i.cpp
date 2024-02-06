@@ -85,3 +85,13 @@ bool operator !=
     a.y != b.y ||
     a.z != b.z;
 }
+
+
+
+/*
+    Multiplication vector components
+*/
+int Point3i::mulComponents()
+{
+    return x * y * z;
+}

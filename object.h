@@ -53,6 +53,10 @@ class Object : public Result
 
     public:
 
+
+        static Object* create();
+
+
         /*
             Directive set eye position
         */
