@@ -8,7 +8,7 @@
 #include <GL/glu.h>
 
 #include "../core/result.h"
-#include "../core/log.h"
+#include "../core/log_manager.h"
 #include "../core/heap.h"
 
 #include "point2d.h"
@@ -44,7 +44,7 @@ class Font : public Bitmap
 {
     private:
 
-        Log*        log             = NULL;
+        LogManager* logManager      = NULL;
         float       space           = 0.3;
         float       letterSpacing   = 0.0;
         Texture*    texture         = NULL;
@@ -61,7 +61,7 @@ class Font : public Bitmap
         /*
             Constructor
         */
-        Font( Log* );
+        Font( LogManager* );
 
 
 
@@ -75,7 +75,7 @@ class Font : public Bitmap
         /*
             Create and return Font
         */
-        static Font* create( Log* );
+        static Font* create( LogManager* );
 
 
 

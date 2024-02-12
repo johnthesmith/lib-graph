@@ -7,10 +7,10 @@
 */
 Texture::Texture
 (
-    Log* aLog
+    LogManager* aLogManager
 )
 {
-    log = aLog;
+    logManager = aLogManager;
 }
 
 
@@ -29,10 +29,10 @@ Texture::~Texture()
 */
 Texture* Texture::create
 (
-    Log* log
+    LogManager* aLogManager
 )
 {
-    return new Texture( log );
+    return new Texture( aLogManager );
 }
 
 

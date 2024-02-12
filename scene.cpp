@@ -28,13 +28,13 @@ using namespace std;
 */
 Scene::Scene
 (
-    Log* aLog
+    LogManager* aLogManager
 )
 {
-    log = aLog;
+    logManager = aLogManager;
     getLog() -> trace( "Create scene object" );
     /* Create the font */
-    font = Font::create( getLog() );
+    font = Font::create( aLogManager );
 }
 
 
@@ -55,10 +55,10 @@ Scene::~Scene()
 */
 Scene* Scene::create
 (
-    Log* aLog
+    LogManager* aLogManager
 )
 {
-    return new Scene( aLog );
+    return new Scene( aLogManager );
 }
 
 
@@ -78,7 +78,7 @@ void Scene::destroy()
 */
 Log* Scene::getLog()
 {
-    return log;
+    return logManager -> getLog();
 }
 
 
@@ -198,13 +198,13 @@ Scene* Scene::init
         }
         else
         {
-            log -> warning( "glfw window create error" );
+            getLog() -> warning( "glfw window create error" );
             setResult( "glfl_window_create_error" );
         }
     }
     else
     {
-        log -> warning( "glfw init error" );
+        getLog() -> warning( "glfw init error" );
         setResult( "glfl_init_error" );
     }
 

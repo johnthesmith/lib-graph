@@ -53,13 +53,13 @@ Gliph* Gliph::set
 
 Font::Font
 (
-    Log* aLog
+    LogManager* aLogManager
 )
 {
-    log = aLog;
+    logManager = aLogManager;
 
     /* Create texture */
-    texture = Texture::create( aLog );
+    texture = Texture::create( aLogManager );
 
     gliphList = new Gliph[ 256 ];
 }
@@ -89,10 +89,10 @@ Font::~Font()
 */
 Font* Font::create
 (
-    Log* aLog
+    LogManager* aLogManager
 )
 {
-    return new Font( aLog );
+    return new Font( aLogManager );
 }
 
 
@@ -224,7 +224,7 @@ Font* Font::build()
 */
 Log* Font::getLog()
 {
-    return log;
+    return logManager -> getLog();
 }
 
 

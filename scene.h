@@ -6,7 +6,7 @@
 
 /* Local libraries */
 #include "../core/result.h"
-#include "../core/log.h"
+#include "../core/log_manager.h"
 #include "../core/text_align.h"
 
 /* Graphics libraries */
@@ -66,7 +66,7 @@ class Scene : public Result
     private:
 
         /* States */
-        Log*                log                 = NULL;     /* Log object defined at constructor */
+        LogManager*         logManager          = NULL;     /* Log object defined at constructor */
         ScenePayload*       payload             = NULL;     /* Payload */
         GLFWwindow*         win                 = NULL;     /* Window handle */
         bool                glInit              = false;    /* opengl init flag */
@@ -124,7 +124,7 @@ class Scene : public Result
         */
         Scene
         (
-            Log* /* Log object */
+            LogManager* /* Log manager object */
         );
 
 
@@ -138,7 +138,7 @@ class Scene : public Result
 
         static Scene* create
         (
-            Log*
+            LogManager*
         );
 
 

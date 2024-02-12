@@ -10,7 +10,7 @@
 #include <GL/glext.h>
 
 
-#include "../core/log.h"
+#include "../core/log_manager.h"
 #include "../core/result.h"
 
 #include "bitmap.h"
@@ -18,7 +18,7 @@
 class Texture: public Result
 {
     private:
-        Log*            log = NULL;
+        LogManager*     logManager = NULL;
         unsigned int    openglId    = 0;
     public:
 
@@ -28,7 +28,7 @@ class Texture: public Result
         */
         Texture
         (
-            Log*
+            LogManager*
         );
 
 
@@ -45,7 +45,7 @@ class Texture: public Result
         */
         static Texture* create
         (
-            Log*
+            LogManager*
         );
 
 
