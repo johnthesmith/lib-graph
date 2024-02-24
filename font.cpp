@@ -3,7 +3,7 @@
 
 #include "font.h"
 #include "../core/utils.h"
-#include "../core/md5.h"
+// #include "../core/md5.h"
 
 
 
@@ -261,9 +261,9 @@ Font* Font::getGliphPos
     bool last = false;
     bool curr = false;
     bool space = true;
-    for( unsigned int y = sourceTop; y < sourceBottom; y++ )
+    for( int y = sourceTop; y < sourceBottom; y++ )
     {
-        for( unsigned int x = sourceLeft; x < sourceRight; x++ )
+        for( int x = sourceLeft; x < sourceRight; x++ )
         {
             Rgba color;
             getRgba( x, y, color );

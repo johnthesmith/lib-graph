@@ -1262,7 +1262,8 @@ Scene* Scene::arrow
     /* Build axis vectors */
     Point3d x = ( aTo - aFrom ).norm();
     Point3d y = ( aTop % x ).norm();
-    Point3d z = ( y % x ).norm();
+
+    /* Point3d z = ( y % x ).norm(); */
 
     /*
         Calculate points

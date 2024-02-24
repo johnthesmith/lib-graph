@@ -171,7 +171,3 @@ class Bitmap : public Result
 };
 
 
-
-static bool imageMagicInit = false;    /* Global flag for image magic initialization in Bitmap constructor */
-
-

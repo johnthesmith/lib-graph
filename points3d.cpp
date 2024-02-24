@@ -38,8 +38,8 @@ Points3d* Points3d::add
 
     memcpy
     (
-        &items[ currentSize ],
-        a -> items,
+        (void*) (&items[ currentSize ]),
+        (void*) (a -> items),
         sourceSize * sizeof( Point3d )
     );
 
@@ -61,7 +61,7 @@ int Points3d::indexBy
 
     intptr_t first = ( intptr_t ) items;
     intptr_t find = ( intptr_t ) a;
-    intptr_t delta = find - first;
+
     int result = ( find - first ) / sizeof( Point3d );
 
     return result >= 0 && result < count ? result : -1;
@@ -129,8 +129,8 @@ Points3d* Points3d::resize
             /* Copy */
             memcpy
             (
-                newItems,           /* Destination */
-                items,              /* Source */
+                (void*) newItems,     /* Destination */
+                (void*) items,        /* Source */
                 min( currentSize, a ) * sizeof( Point3d )
             );
         }

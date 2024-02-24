@@ -7,6 +7,10 @@
 #include "../core/utils.h"
 
 
+/* Global flag for image magic initialization in Bitmap constructor */
+static bool imageMagicInit = false;
+
+
 
 /*
     Constructor

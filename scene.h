@@ -33,9 +33,9 @@ class ScenePayload;
 
 
 /* Base line */
-static double BASE_LINE_TOP     = 1.0;
-static double BASE_LINE_MIDDLE  = 0.5;
-static double BASE_LINE_BOTTOM  = 0.0;
+static const double BASE_LINE_TOP     = 1.0;
+static const double BASE_LINE_MIDDLE  = 0.5;
+static const double BASE_LINE_BOTTOM  = 0.0;
 
 
 
