@@ -22,7 +22,6 @@ class Bitmap : public Result
         int             height  = 0;
 
         Magick::Image*  image   = NULL;
-        void*           buffer  = NULL;
 
         Bitmap* updateSize();
 

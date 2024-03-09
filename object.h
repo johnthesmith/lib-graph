@@ -47,7 +47,6 @@ class Object : public Result
         bool            eyeLock         = false;    /* Lock eye position */
         bool            topLock         = false;    /* Lock top direction */
         bool            targetLock      = false;    /* Lock target position */
-        bool            gazeLock        = true;     /* Lock distance between eye and target*/
 
         double          sensivity       = 1.0;
 

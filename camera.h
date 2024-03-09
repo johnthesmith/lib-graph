@@ -17,7 +17,6 @@ class Camera : public TemporalObject
     private:
 
         double          viewAngle       = M_PI * 0.5;
-        double          sensivity       = 1.0;
 
     public:
 
