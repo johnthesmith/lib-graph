@@ -593,7 +593,7 @@ class Scene : public Result
         */
         Scene* textCR
         (
-            const int = 0
+            const int = 1
         );
 
 

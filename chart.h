@@ -21,42 +21,60 @@ class Chart2d
         Rgba lineColor = Rgba( 0.1, 0.2, 0.4, 0.7 );
         double lineWeight = 1.0;
 
+        Scene*  scene;
+
     public:
 
-        Chart2d();
-
-        static Chart2d* create();
-        void destroy();
-
-
-
-        Chart2d* drawBack   /* Draw method */
+        Chart2d
         (
             Scene*
         );
 
 
 
-        Chart2d* draw   /* Draw method */
+        static Chart2d* create
         (
-            Scene*,
+            Scene*
+        );
+
+
+
+        void destroy();
+
+
+
+        /* Draw method */
+        Chart2d* drawBack();
+
+
+        /* Draw method */
+        Chart2d* draw
+        (
             function <double ( double, double )>,    /* Lambda calculate function */
             double
         );
 
 
 
+        /* Draw method */
+        Chart2d* draw
+        (
+            function <double ( double )>    /* Lambda calculate function */
+        );
+
+
+
         Chart2d* drawX  /* Draw X value */
         (
-            Scene*,
-            double
+            double,
+            bool = false,   /* Label */
+            int = 0         /* Label shoft */
         );
 
 
 
         Chart2d* drawY  /* Draw Y value */
         (
-            Scene*,
             double
         );
 

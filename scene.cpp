@@ -1521,12 +1521,13 @@ Scene* Scene::textTab
 */
 Scene* Scene::textCR
 (
-    const int aCout
+    const int aCount
 )
 {
     setTextPosition
     (
-        getTextPosition() - textTop * ( textMaxSize == 0.0 ? textSize :  textMaxSize )
+        getTextPosition()
+        - textTop * ( textMaxSize == 0.0 ? textSize : textMaxSize ) * aCount
     );
     return this;
 }
@@ -1708,8 +1709,6 @@ double Scene::getTextSize()
 {
     return textSize;
 }
-
-
 
 
 

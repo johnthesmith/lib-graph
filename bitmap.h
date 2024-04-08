@@ -80,8 +80,54 @@ class Bitmap : public Result
         */
         Bitmap* scale
         (
-            int /* Width */,
+            int, /* Width */
             int /* Height */
+        );
+
+
+
+        /*
+            Resize bitmap
+        */
+        Bitmap* zoom
+        (
+            double,         /* Zoom */
+            bool = false    /* Keep size */
+        );
+
+
+
+        /*
+            Crop bitmap
+        */
+        Bitmap* crop
+        (
+            int,    /* left */
+            int,    /* top */
+            int,    /* width */
+            int     /* height */
+        );
+
+
+
+        /*
+            Resize bitmap
+        */
+        Bitmap* shift
+        (
+            double, /* x shift */
+            double  /* y shift */
+        );
+
+
+
+        /*
+            Rotate bitmap
+        */
+        Bitmap* rotate
+        (
+            double,         /* Part of circle */
+            bool = false    /* Crop */
         );
 
 
@@ -168,5 +214,3 @@ class Bitmap : public Result
         );
 
 };
-
-

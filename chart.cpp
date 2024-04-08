@@ -5,15 +5,22 @@
 
 
 
-Chart2d::Chart2d()
+Chart2d::Chart2d
+(
+    Scene* aScene
+)
 {
+    scene = aScene;
 }
 
 
 
-Chart2d* Chart2d::create()
+Chart2d* Chart2d::create
+(
+    Scene* aScene
+)
 {
-    return new Chart2d();
+    return new Chart2d( aScene );
 }
 
 
@@ -38,24 +45,21 @@ void Chart2d::destroy()
     *-----------------------------> x
 */
 
-Chart2d* Chart2d::drawBack
-(
-    Scene* aScene
-)
+Chart2d* Chart2d::drawBack()
 {
     Point2d p1 = rect.center - rect.size;
     Point2d p2 = Point2d( p1.x, rect.center.y + rect.size.y );
     Point2d p3 = rect.center + rect.size;
     Point2d p4 = Point2d( p3.x, p1.y);
 
-    aScene -> begin( QUAD ) -> color( backColor );
-    aScene -> vertex( p1 ) -> vertex( p2 ) -> vertex( p3 ) -> vertex( p4 );
-    aScene -> end();
+    scene -> begin( QUAD ) -> color( backColor );
+    scene -> vertex( p1 ) -> vertex( p2 ) -> vertex( p3 ) -> vertex( p4 );
+    scene -> end();
 
-    aScene -> setLineWidth( 1 );
-    aScene -> begin( LOOP ) -> color( lineColor );
-    aScene -> vertex( p1 ) -> vertex( p2 ) -> vertex( p3 ) -> vertex( p4 );
-    aScene -> end();
+    scene -> setLineWidth( 1 );
+    scene -> begin( LOOP ) -> color( lineColor );
+    scene -> vertex( p1 ) -> vertex( p2 ) -> vertex( p3 ) -> vertex( p4 );
+    scene -> end();
 
     return this;
 }
@@ -64,26 +68,50 @@ Chart2d* Chart2d::drawBack
 
 Chart2d* Chart2d::draw
 (
-    Scene* aScene,
     function <double ( double, double )> aCalc,
     double a1
 )
 {
     double step = ( xMax - xMin ) / ( rect.size.x * 2 );
 
-    aScene -> setLineWidth( lineWeight );
+    scene -> setLineWidth( lineWeight );
 
-    aScene -> begin( LINES  ) -> color( lineColor );;
+    scene -> begin( LINES  ) -> color( lineColor );;
     double x = xMin;
     while( x < xMax )
     {
         double y = aCalc( x, a1 );
         Point2d p = chartToScreen( Point2d( x, y ));
-        aScene -> vertex( p );
+        scene -> vertex( p );
         x = x + step;
     }
-    aScene -> end();
+    scene -> end();
 
+
+    return this;
+}
+
+
+
+Chart2d* Chart2d::draw
+(
+    function <double ( double )> aCalc
+)
+{
+    double step = ( xMax - xMin ) / ( rect.size.x * 2 );
+
+    scene -> setLineWidth( lineWeight );
+
+    scene -> begin( LINES  ) -> color( lineColor );;
+    double x = xMin;
+    while( x < xMax )
+    {
+        double y = aCalc( x );
+        Point2d p = chartToScreen( Point2d( x, y ));
+        scene -> vertex( p );
+        x = x + step;
+    }
+    scene -> end();
 
     return this;
 }
@@ -92,21 +120,31 @@ Chart2d* Chart2d::draw
 
 Chart2d* Chart2d::drawX
 (
-    Scene* aScene,
-    double x
+    double  x,
+    bool    aLabel,
+    int     aShift
 )
 {
-    aScene -> setLineWidth( lineWeight );
+    scene -> setLineWidth( lineWeight );
 
     Point2d p1 = chartToScreen( Point2d( x, yMin ));
     Point2d p2 = chartToScreen( Point2d( x, yMax ));
 
-    aScene
+    scene
     -> begin( LINE  )
     -> color( lineColor )
     -> vertex( p1 )
     -> vertex( p2 )
     -> end();
+
+    if( aLabel )
+    {
+        scene
+        -> setTextHorisontalAlign( ALIGN_LEFT )
+        -> setTextPosition( Point3d( p2.x, p2.y, 0 ))
+        -> textCR( aShift )
+        -> text( to_string( x ));
+    }
 
     return this;
 }
@@ -115,16 +153,15 @@ Chart2d* Chart2d::drawX
 
 Chart2d* Chart2d::drawY
 (
-    Scene* aScene,
     double y
 )
 {
-    aScene -> setLineWidth( lineWeight );
+    scene -> setLineWidth( lineWeight );
 
     Point2d p1 = chartToScreen( Point2d( xMin, y ));
     Point2d p2 = chartToScreen( Point2d( xMax, y ));
 
-    aScene
+    scene
     -> begin( LINE  )
     -> color( lineColor )
     -> vertex( p1 )

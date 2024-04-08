@@ -134,6 +134,141 @@ Bitmap* Bitmap::scale
 
 
 
+
+/*
+    Resize bitmap
+*/
+Bitmap* Bitmap::zoom
+(
+    double  aZoom,      /* Zoom */
+    bool    aKeepSize   /* Keep size */
+)
+{
+    auto oldWidth = width;
+    auto oldHeight = height;
+
+    if( aZoom < 0.0 ) aZoom = 0;
+
+    scale( width * aZoom, height * aZoom );
+    if( aKeepSize )
+    {
+        if( aZoom >= 1.0 )
+        {
+            crop
+            (
+                ( width - oldWidth ) / 2,
+                ( height - oldHeight ) / 2,
+                oldWidth,
+                oldHeight
+            );
+        }
+        else
+        {
+            auto newImage = new Magick::Image
+            (
+                Magick::Geometry( oldWidth, oldHeight ),
+                Magick::Color( "white" )
+            );
+
+            int x = ( oldWidth - width ) / 2;
+            int y = ( oldHeight - height ) / 2;
+
+            newImage -> composite( *image, x, y, Magick::OverCompositeOp );
+
+            delete image;
+            image = newImage;
+            updateSize();
+        }
+    }
+    else
+    {
+        updateSize();
+    }
+    return this;
+}
+
+
+
+/*
+    Resize bitmap
+*/
+Bitmap* Bitmap::shift
+(
+    double aX,
+    double aY
+)
+{
+    auto newImage = new Magick::Image
+    (
+        Magick::Geometry( width, height ),
+        Magick::Color( "white" )
+    );
+
+    newImage -> composite
+    (
+        *image,
+        width * aX,
+        height * aY,
+        Magick::OverCompositeOp
+    );
+
+    delete image;
+    image = newImage;
+
+    return this;
+}
+
+
+
+
+/*
+    Crop bitmap
+*/
+Bitmap* Bitmap::crop
+(
+    int aLeft,      /* left */
+    int aTop,       /* top */
+    int aWidth,     /* width */
+    int aHeight    /* height */
+)
+{
+    image -> crop( Magick::Geometry( aWidth, aHeight, aLeft, aTop ));
+    updateSize();
+    return this;
+}
+
+
+
+
+/*
+    Rotate bitmap
+*/
+Bitmap* Bitmap::rotate
+(
+    double aCircle, /* Part of circle */
+    bool    aCrop
+)
+{
+    image -> rotate( aCircle * 360.0 );
+    if( aCrop )
+    {
+        crop
+        (
+            ( image -> columns() - width ) / 2,
+            ( image -> rows() - height ) / 2,
+            width,
+            height
+        );
+    }
+    else
+    {
+        updateSize();
+    }
+    return this;
+}
+
+
+
 /*
     Resize bitmap
 */
