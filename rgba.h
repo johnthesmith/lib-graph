@@ -136,6 +136,7 @@ static Rgba RGBA_YELLOW     = Rgba( 1.0, 1.0, 0.0, 1.0 );
 static Rgba RGBA_MAGENTA    = Rgba( 1.0, 0.0, 1.0, 1.0 );
 static Rgba RGBA_ORANGE     = Rgba( 1.0, 0.5, 0.0, 1.0 );
 static Rgba RGBA_CYAN       = Rgba( 0.0, 1.0, 1.0, 1.0 );
+static Rgba RGBA_GREY       = Rgba( 0.5, 0.5, 0.5, 1.0 );
 
 static Rgba RGBA_X          = RGBA_RED;
 static Rgba RGBA_Y          = RGBA_GREEN;
