@@ -118,6 +118,19 @@ Chart2d* Chart2d::draw
 
 
 
+/*
+    Draw chart
+*/
+Chart2d* Chart2d::drawChartData
+(
+    ChartData* aChartData
+)
+{
+    return this;
+}
+
+
+
 Chart2d* Chart2d::drawX
 (
     double  x,

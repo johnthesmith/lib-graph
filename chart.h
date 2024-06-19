@@ -5,6 +5,7 @@
 #include "rect2d.h"
 #include "scene.h"
 #include "rgba.h"
+#include "../core/chart_data.h"
 
 class Chart2d
 {
@@ -61,6 +62,18 @@ class Chart2d
         (
             function <double ( double )>    /* Lambda calculate function */
         );
+
+
+
+
+        /*
+            Draw chart
+        */
+        Chart2d* drawChartData
+        (
+            ChartData*
+        );
+
 
 
 
