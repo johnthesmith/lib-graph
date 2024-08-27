@@ -2,6 +2,14 @@
 
 
 
+#include <string>
+
+
+
+using namespace std;
+
+
+
 /*
     Three components integar point
 */
@@ -54,6 +62,13 @@ struct Point3i
         const Point3i&,  /* First operand */
         const Point3i&   /* Second operand */
     );
+
+
+
+    /*
+        Convert Point3d to string
+    */
+    string toString() const;
 
 
 

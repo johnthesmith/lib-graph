@@ -11,7 +11,6 @@ struct Point3d;
 
 
 
-
 struct Point4d
 {
     double x = 0;
@@ -249,6 +248,7 @@ struct Point4d
     Point4d& toConsole();
 
 };
+
 
 
 /*

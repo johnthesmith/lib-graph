@@ -4,8 +4,8 @@
 #include <cfloat>
 
 
-#include "point4d.h"
 #include "point3i.h"
+#include "point4d.h"
 
 using namespace std;
 

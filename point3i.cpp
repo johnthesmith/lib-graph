@@ -95,3 +95,17 @@ int Point3i::mulComponents()
 {
     return x * y * z;
 }
+
+
+
+/*
+    Convert Point3d to string
+*/
+string Point3i::toString() const
+{
+    return
+    "[" + to_string( x ) + "]" +
+    "[" + to_string( y ) + "]" +
+    "[" + to_string( z ) + "]"
+    ;
+}
