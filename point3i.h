@@ -33,6 +33,27 @@ struct Point3i
 
 
 
+    /*
+        Return 3d position by linear index
+
+          x 0 1 2 3 4
+        y
+        0   0 1 2 3 4
+        1   5 6[7]8 9
+
+        argument size[5,2,1], index[ 7 ]
+        result [ 2,1,0 ]
+    */
+    static Point3i byIndex
+    (
+        /* Size of array */
+        Point3i,
+        /* Linear index */
+        int
+    );
+
+
+
     friend Point3i operator -
     (
         const Point3i&,  /* First operand */
@@ -68,7 +89,10 @@ struct Point3i
     /*
         Convert Point3d to string
     */
-    string toString() const;
+    string toString
+    (
+        const string = "[%d,%d,%d]"
+    ) const;
 
 
 
@@ -76,6 +100,7 @@ struct Point3i
         Multiplication vector components
     */
     int mulComponents();
+
 };
 
 

@@ -17,6 +17,33 @@ Point3i::Point3i
 
 
 /*
+    Return 3d position by linear index
+
+      x 0 1 2 3 4
+    y
+    0   0 1 2 3 4
+    1   5 6[7]8 9
+
+    argument size[5,2,1], index[ 7 ]
+    result [ 2,1,0 ]
+*/
+Point3i Point3i::byIndex
+(
+    Point3i aSize,
+    int aIndex
+)
+{
+    return Point3i
+    (
+        aIndex % aSize.x,
+        aIndex / aSize.x,
+        aIndex / ( aSize.x * aSize.y )
+    );
+}
+
+
+
+/*
     Minus Operator r = a - b
 */
 Point3i operator -
@@ -101,11 +128,17 @@ int Point3i::mulComponents()
 /*
     Convert Point3d to string
 */
-string Point3i::toString() const
+string Point3i::toString
+(
+    const string aFormat
+) const
 {
-    return
-    "[" + to_string( x ) + "]" +
-    "[" + to_string( y ) + "]" +
-    "[" + to_string( z ) + "]"
-    ;
+    const char* format = aFormat.c_str();
+    /* Let buffer size */
+    int size = std::snprintf(nullptr, 0, format, x, y, z) + 1;
+    std::string result(size, '\0');
+    std::snprintf(&result[0], size, format, x, y, z);
+    /* Remove null-terminator */
+    result.pop_back();
+    return result;
 }
