@@ -33,7 +33,8 @@ class ScenePayload : public Payload
         */
         ScenePayload
         (
-            Application*
+            Application*,
+            string
         );
 
 
@@ -50,7 +51,8 @@ class ScenePayload : public Payload
         */
         static ScenePayload* create
         (
-            Application*
+            Application*,
+            string
         );
 
 

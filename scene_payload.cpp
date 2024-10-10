@@ -18,9 +18,10 @@ using namespace std;
 */
 ScenePayload::ScenePayload
 (
-    Application* aApplication  /* Log */
+    Application* aApplication,
+    string aId
 )
-: Payload( aApplication ) /* Call parent constructor */
+: Payload( aApplication, aId ) /* Call parent constructor */
 {
 }
 
@@ -37,10 +38,11 @@ ScenePayload::~ScenePayload()
 */
 ScenePayload* ScenePayload::create
 (
-    Application* aApplication
+    Application* aApplication,
+    string aId
 )
 {
-    return new ScenePayload( aApplication );
+    return new ScenePayload( aApplication, aId );
 }
 
 
