@@ -14,38 +14,6 @@ using namespace std;
 
 
 /*
-  Constructor
-*/
-Point3d::Point3d
-(
-    double ax,
-    double ay,
-    double az
-)
-{
-    x = ax;
-    y = ay;
-    z = az;
-}
-
-
-
-/*
-  Constructor
-*/
-Point3d::Point3d
-(
-    const Point3d& a
-)
-{
-    x = a.x;
-    y = a.y;
-    z = a.z;
-}
-
-
-
-/*
     Plus Operator r = a + b
 */
 Point3d operator+
@@ -101,29 +69,11 @@ double operator^
 
 
 
-/*
-    Operator div r = a / b
-*/
-Point3d operator/
-(
-    const Point3d& a,   /* First operand */
-    const Point3d& b    /* Second operand */
-)
-{
-    return Point3d
-    (
-        abs( a.x - b.x ) < EPSILON_D ? 0 : a.x / b.x,
-        abs( a.y - b.y ) < EPSILON_D ? 0 : a.y / b.y,
-        abs( a.z - b.z ) < EPSILON_D ? 0 : a.z / b.z
-    );
-}
-
-
 
 /*
     Operator div r = a / b
 */
-Point3d operator/
+Point3d operator /
 (
     const Point3d& a,   /* First operand */
     const Point3i& b    /* Second operand */

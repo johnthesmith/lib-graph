@@ -2,15 +2,19 @@
 
 #include <string>
 #include <cfloat>
-
+#include <cmath>
 
 #include "point3i.h"
 #include "point4d.h"
+#include "../core/math.h"
 
 using namespace std;
 
 
+
 struct Point4d;
+
+
 
 struct Point3d
 {
@@ -25,10 +29,15 @@ struct Point3d
     */
     Point3d
     (
-        double = 0.0, /* x */
-        double = 0.0, /* y */
-        double = 0.0  /* z */
-    );
+        double ax = 0.0, /* x */
+        double ay = 0.0, /* y */
+        double az = 0.0  /* z */
+    )
+    {
+        x = ax;
+        y = ay;
+        z = az;
+    }
 
 
 
@@ -37,8 +46,29 @@ struct Point3d
     */
     Point3d
     (
-        const Point3d&
-    );
+        const Point3d& a
+    )
+    {
+        x = a.x;
+        y = a.y;
+        z = a.z;
+    }
+
+
+
+    /*
+      Constructor
+    */
+    Point3d
+    (
+        const Point3i& a
+    )
+    {
+        x = a.x;
+        y = a.y;
+        z = a.z;
+    }
+
 
 
 
@@ -68,14 +98,30 @@ struct Point3d
 
 
 
-    friend Point3d operator/ (
-        const Point3d&,  /* First operand */
-        const Point3d&   /* Second operand */
-    );
+    /*
+        Operator div r = a / b
+    */
+    friend Point3d operator /
+    (
+        /* First operand */
+        const Point3d& a,
+        /* Second operand */
+        const Point3d& b
+    )
+    {
+        return Point3d
+        (
+            abs( b.x ) < EPSILON_D ? 0.0 : a.x / b.x,
+            abs( b.y ) < EPSILON_D ? 0.0 : a.y / b.y,
+            abs( b.z ) < EPSILON_D ? 0.0 : a.z / b.z
+        );
+    }
 
 
 
-    friend Point3d operator/ (
+
+    friend Point3d operator/
+    (
         const Point3d&,  /* First operand */
         const Point3i&   /* Second operand */
     );
@@ -87,6 +133,25 @@ struct Point3d
         const Point3d&,  /* First operand */
         double /* Scalar operand */
     );
+
+
+
+    friend Point3d operator*
+    (
+        /* First operand */
+        const Point3d& a,
+        /* Second operand */
+        const Point3i& b
+    )
+    {
+        return Point3d
+        (
+            a.x * b.x,
+            a.y * b.y,
+            a.z * b.z
+        );
+    }
+
 
 
 
@@ -187,6 +252,21 @@ struct Point3d
     (
         const double = 0
     );
+
+
+
+    /*
+        Conver to Point3i object
+    */
+    Point3i toPoint3i() const
+    {
+        return Point3i
+        (
+            ( int )round( x ),
+            ( int )round( y ),
+            ( int )round( z )
+        );
+    }
 
 
 
