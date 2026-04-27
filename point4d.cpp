@@ -114,8 +114,8 @@ Point4d operator*
 */
 Point4d operator*
 (
-    const Matrix4& aMatrix,
-    const Point4d& aPoint
+    const Matrix4& /* aMatrix */,
+    const Point4d& /* aPoint */
 )
 {
     return Point4d
@@ -438,7 +438,7 @@ double Point4d::dot
 */
 Point4d& Point4d::dot
 (
-    const Matrix4& a
+    const Matrix4& /* a */
 )
 {
 // TODO

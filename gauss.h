@@ -34,9 +34,7 @@ class GaussD1
         /* Kernel buffer */
         double*,
         /* Kernel size */
-        const unsigned int,
-        /* Smoth factor (sigma) */
-        double
+        const unsigned int
     );
 
     public:

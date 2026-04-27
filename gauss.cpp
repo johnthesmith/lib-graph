@@ -54,9 +54,7 @@ void GaussD1::smoth
     /* Kernel buffer */
     double* aKernel,
     /* Kernel size */
-    const unsigned int aCountKernel,
-    /* Smoth factor (sigma) */
-    double aSigma
+    const unsigned int aCountKernel
 )
 {
     unsigned int halfKernelSize = aCountKernel / 2;
@@ -66,7 +64,7 @@ void GaussD1::smoth
         for( unsigned int j = 0; j < aCountKernel; j++)
         {
             int idx = i + j - halfKernelSize;
-            if( idx >= 0 && idx < aCountBuffer )
+            if( idx >= 0 && (unsigned int)idx < aCountBuffer )
             {
                 sum += aSource[ idx ] * aKernel[ j ];
             }
@@ -96,6 +94,6 @@ void GaussD1::smoth
 {
     double kernel[ aCountKernel ];
     buildKernel( kernel, aCountKernel, aSmoth );
-    smoth( aSource, aDestination, aCount, kernel, aCountKernel, aSmoth );
+    smoth( aSource, aDestination, aCount, kernel, aCountKernel );
 }
 

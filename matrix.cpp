@@ -212,12 +212,12 @@ Matrix4& Matrix4::look
 
 Matrix4& Matrix4::ortho
 (
-    double l,
-    double r,
-    double b,
-    double t,
-    double n,
-    double f
+    double /*l*/,
+    double /*r*/,
+    double /*b*/,
+    double /*t*/,
+    double /*n*/,
+    double /*f*/
 )
 {
 //	l1.x = 2.0 / (r-l);
@@ -241,8 +241,8 @@ Matrix4& Matrix4::ortho
 
 Matrix4& Matrix4::dot
 (
-    Matrix4& a,
-    Matrix4& b
+    Matrix4& /*a*/,
+    Matrix4& /*b*/
 )
 {
 //    l1.x = a.l1.x * b.l1.x + a.l1.y * b.l2.x + a.l1.z * b.l3.x + a.l1.w * b.l4.x;
